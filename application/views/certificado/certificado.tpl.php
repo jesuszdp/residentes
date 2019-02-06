@@ -3,9 +3,9 @@
         <h1 class="page-head-line"><?php echo $language_text['Certificados']['cert_titulo']; ?></h1>
     </div>
     <?php echo form_open('certificado/index', array('id' => 'form_certificado')); ?>
-    <div class="col-sm-12">
+    <div class="col-sm-12" style="margin-bottom:20px;">
         <h4 class="page-head-line"><?php echo $language_text['Certificados']['cert_instrucciones']; ?></h4>
-        <div class="col-sm-4 text-right">
+        <div class="col-xs-4 col-sm-4 text-right">
             <label class="control-label"><?php echo $this->form_complete->create_element(
                 array(
                     'id' => 'tipo_busqueda',
@@ -21,7 +21,7 @@
             ); ?>
             <?php echo $language_text['Certificados']['cert_folio']; ?></label>
         </div>
-        <div class="col-sm-4 text-center">
+        <div class="col-xs-4 col-sm-4 text-center">
             <label class="control-label"><?php echo $this->form_complete->create_element(
                 array(
                     'id' => 'tipo_busqueda',
@@ -37,7 +37,7 @@
             ); ?>
             <?php echo $language_text['Certificados']['cert_curp']; ?></label>
         </div>
-        <div class="col-sm-4 text-left">
+        <div class="col-xs-4 col-sm-4 text-left">
             <label class="control-label"><?php echo $this->form_complete->create_element(
                 array(
                     'id' => 'tipo_busqueda',
@@ -59,6 +59,7 @@
         }
         ?>
     </div>
+    <div style="clear:both;"></div>
     <div class="col-sm-12">
         <div id="div_folio" class="div_cuadro">
             <div class="ces-contact-form form-item webform-component webform-component-textfield webform-component--matricula webform-container-inline form-group form-inline form-item form-item-submitted-matricula form-type-textfield form-group"> <label class="control-label" for="edit-submitted-matricula"><?php echo $language_text['Certificados']['cert_folio']; ?></label>
@@ -164,10 +165,10 @@
                     ); ?>
                 </div>
                 <div class="captcha-container" id="captcha_first">
-                    <div class="col-lg-6 text-right">
+                    <div class="col-lg-6 col-xs-8 text-right">
                         <img class="captcha" id="captcha_img" src="<?php echo site_url(); ?>/inicio/captcha" alt="CAPTCHA Image" />
                     </div>
-                    <div class="col-lg-6 text-left">
+                    <div class="col-lg-6 col-xs-4 text-left">
                         <a class="btn btn-lg btn-theme" onclick="new_captcha()" style="padding: 10px 30px;">
                             <span class="glyphicon glyphicon-refresh"></span>
                         </a>
