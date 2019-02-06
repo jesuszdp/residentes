@@ -104,6 +104,13 @@ $config['form_user_update_password'] = array(
         'rules' => 'trim|required|matches[pass]' //|callback_valid_pass
     ),
 );
+$config['form_niveles_acceso_usuario'] = array(
+    array(
+        'field' => 'niveles',
+        'label' => 'niveles',
+        'rules' => 'required'
+    )
+);
 
 $config["consulta_folio"] = array(
     array(
