@@ -92,6 +92,18 @@ $config["login"] = array(
       ), */
     ),
 );
+$config['form_user_update_password'] = array(
+    array(
+        'field' => 'pass',
+        'label' => 'Contraseña',
+        'rules' => 'trim|required|min_length[8]'
+    ),
+    array(
+        'field' => 'pass_confirm',
+        'label' => 'Confirmar contraseña',
+        'rules' => 'trim|required|matches[pass]' //|callback_valid_pass
+    ),
+);
 
 $config["consulta_folio"] = array(
     array(
