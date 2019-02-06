@@ -6,7 +6,7 @@
     <div class="col-sm-12">
         <h4 class="page-head-line"><?php echo $language_text['Certificados']['cert_instrucciones']; ?></h4>
         <div class="col-sm-4 text-right">
-            <?php echo $this->form_complete->create_element(
+            <label class="control-label"><?php echo $this->form_complete->create_element(
                 array(
                     'id' => 'tipo_busqueda',
                     'type' => 'radio',
@@ -19,10 +19,10 @@
                     )
                 )
             ); ?>
-            <label class="control-label" for="edit-submitted-matricula"><?php echo $language_text['Certificados']['cert_folio']; ?></label>
+            <?php echo $language_text['Certificados']['cert_folio']; ?></label>
         </div>
         <div class="col-sm-4 text-center">
-            <?php echo $this->form_complete->create_element(
+            <label class="control-label"><?php echo $this->form_complete->create_element(
                 array(
                     'id' => 'tipo_busqueda',
                     'type' => 'radio',
@@ -35,10 +35,10 @@
                     )
                 )
             ); ?>
-            <label class="control-label" for="edit-submitted-matricula"><?php echo $language_text['Certificados']['cert_curp']; ?></label>
+            <?php echo $language_text['Certificados']['cert_curp']; ?></label>
         </div>
         <div class="col-sm-4 text-left">
-            <?php echo $this->form_complete->create_element(
+            <label class="control-label"><?php echo $this->form_complete->create_element(
                 array(
                     'id' => 'tipo_busqueda',
                     'type' => 'radio',
@@ -51,7 +51,7 @@
                     )
                 )
             ); ?>
-            <label class="control-label" for="edit-submitted-matricula"><?php echo $language_text['Certificados']['cert_nombre']; ?></label>
+            <?php echo $language_text['Certificados']['cert_nombre']; ?></label>
         </div>
         <?php
         if(isset($msg) && !empty($msg)){

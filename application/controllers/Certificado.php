@@ -59,7 +59,8 @@ class Certificado extends MY_Controller {
         }
         $folio = xss_clean($folio); //Limpiar cadena
         if(!is_null($folio) && !empty($folio)){ //Almacenar en arreglo POST valores de búsqueda
-            $folio = decrypt_base64(xss_clean($folio));
+            //$folio = decrypt_base64(xss_clean($folio));
+            $folio = xss_clean($folio);
             $this->load->library('form_validation');
             $this->form_validation->set_data(array('folio'=>$folio));
             $this->form_validation->set_rules('folio', 'Folio', 'required|alpha_dash|min_length[22]|max_length[30]');

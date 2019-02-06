@@ -110,13 +110,13 @@
                             </div>
                         </section>
                         <section id="btn-divisiones" class="col-xs-12 col-sm-12 col-md-7">
-                            <div class="region region-head-button">
+                            <!-- <div class="region region-head-button">
                                 <section id="block-block-3" class="block block-block clearfix">
                                     <div class="col-xs-12 col-sm-4 col-md-4 main-CESbuttons"><div class="btn-pad botonPE"><a class="main-button" href="/programas-educativos/acerca">PROGRAMAS EDUCATIVOS</a></div></div>
                                     <div class="col-xs-12 col-sm-4 col-md-4 main-CESbuttons"><div class="btn-pad botonPE"><a class="main-button" href="/educacion-continua/acerca">EDUCACIÓN CONTINUA</a></div></div>
                                     <div class="col-xs-12 col-sm-4 col-md-4 main-CESbuttons"><div class="btn-pad botonPE"><a class="main-button" href="/innovacion-educativa/acerca">INNOVACIÓN EDUCATIVA</a></div></div>
                                 </section>
-                            </div>
+                            </div> -->
                         </section>
                         <!-- /Logo -->
                         <!-- <div class="col-sm-4 col-md-7 col-lg-7 pull-right text-right">
