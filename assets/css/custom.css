@@ -6,6 +6,7 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700);
 body {
 	font-family: "Montserrat";
+	color: #4e232e;
 }
 
 #div_redes {
@@ -64,7 +65,7 @@ label.formulario {
 	z-index: 100000;
 }
 .modal-header h4{
-	color: #000;
+	/*color: #000;*/
 	font-weight: 600;
 }
 
@@ -382,6 +383,17 @@ label {
 	display: none;
 }
 
+.sn-title {
+    background-color: #00594C;
+}
+
+.title-section {
+    color: #FFFFFF;
+    font-weight: 300;
+    font-size: 27px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
 
 @media only screen and (max-width: 1124px) {
 	.table-responsive {
@@ -395,4 +407,13 @@ label {
 		border: 1px solid #ddd;
 
 	}
+}
+
+h4 {
+	color: #4e232e;
+}
+
+.table > thead > tr > td.info, .table > tbody > tr > td.info, .table > tfoot > tr > td.info, .table > thead > tr > th.info, .table > tbody > tr > th.info, .table > tfoot > tr > th.info, .table > thead > tr.info > td, .table > tbody > tr.info > td, .table > tfoot > tr.info > td, .table > thead > tr.info > th, .table > tbody > tr.info > th, .table > tfoot > tr.info > th {
+	background-color: #5c5c5c;
+	color: #FFF;
 }

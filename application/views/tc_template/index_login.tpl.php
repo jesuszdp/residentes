@@ -182,7 +182,16 @@
 
             <!-- Content area -->
             <div class="content-area">
-
+                <div class="sn-title">
+                    <div class="container">
+                        <h3 class="title-section col-xs-12 col-sm-12 col-md-12 ">
+                            <?php if (isset($main_title)) { ?>
+                                <?php echo $main_title; ?>
+                            <?php } ?>
+                        </h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
                 <!-- <div id="main"> -->
                 <section class="page-section background-img">
                     <div class="container">
@@ -251,7 +260,7 @@
                                     <section id='block-social-media-links-social-media-links' class='block block-social-media-links clearfix'>
                                     <ul class='social-media-links platforms inline horizontal'><li class='facebook first'><a href='https://www.facebook.com/SaberIMSS' target='_blank' title='Facebook'><img src='http://educacionensalud.imss.gob.mx/sites/all/modules/social_media_links/libraries/elegantthemes/PNG/facebook.png' alt='Facebook icon'></a></li><li class='twitter'><a href='http://www.twitter.com/Saber_IMSS ' target='_blank' title='Twitter'><img src='http://educacionensalud.imss.gob.mx/sites/all/modules/social_media_links/libraries/elegantthemes/PNG/twitter.png' alt='Twitter icon'></a></li><li class='youtube_channel last'><a href='http://www.youtube.com/channel/UCvlda6Uw7N_pZAH_fxE9ZYA' target='_blank' title='Youtube (Channel)'><img src='http://educacionensalud.imss.gob.mx/sites/all/modules/social_media_links/libraries/elegantthemes/PNG/youtube.png' alt='Youtube (Channel) icon'></a></li></ul>	</section>
                                     <section id='block-block-1' class='block block-block clearfix'>
-                                    <div class='center-block block-contact withadress'><address class='faddress'><span style='color:#ffffff;'><strong>Instituto Mexicano del Seguro Social Centro Médico Siglo XXI</strong><br>Cuauhtémoc 330, Doctores 06720, Ciudad de México</span><br><br><div aria-hidden='true' class='glyphicon glyphicon-earphone' style='color:#ffffff;'><span style='color:#ffffff;'>&nbsp;</span><a href='tel:+15556276900'><span style='color:#ffffff;'>01 (55) 5627 6900</span></a><span style='color:#ffffff;'><span> Ext. 21175</span></span></div></address><address class='faddress'><span style='color:#ffffff;'><span style='font-size:11px;'>Programas Educativos | &nbsp;Ext. 21178<br>Educación Continua | &nbsp;Ext. 21243<br>Innovación Educativa | &nbsp;Ext. 21254</span></span></address><p class='f-private-policy'><span style='color:#ffffff;'>IMSS, 2019. Todos los derechos reservados.</span></p></div></section>
+                                    <div class='center-block block-contact withadress'><address class='faddress'><span style='color:#ffffff;'><strong>Instituto Mexicano del Seguro Social Centro Médico Siglo XXI</strong><br>Cuauhtémoc 330, Doctores 06720, Ciudad de México</span><br><br><a href='tel:+15556276900'><div aria-hidden='true' class='glyphicon glyphicon-earphone' style='color:#ffffff;'><span style='color:#ffffff;'>&nbsp;</span></div><span style='color:#ffffff;'>01 (55) 5627 6900</span></a><span style='color:#ffffff;'><span> Ext. 21175</span></span></address><address class='faddress'><span style='color:#ffffff;'><span style='font-size:11px;'>Programas Educativos | &nbsp;Ext. 21178<br>Educación Continua | &nbsp;Ext. 21243<br>Innovación Educativa | &nbsp;Ext. 21254</span></span></address><p class='f-private-policy'><span style='color:#ffffff;'>IMSS, 2019. Todos los derechos reservados.</span></p></div></section>
                                 </div>
                             </div>
                         </section>

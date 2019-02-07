@@ -81,6 +81,7 @@ class Certificado extends MY_Controller {
         $output['language_text'] = $this->language_text;
         //pr($output);
         $view = $this->load->view('certificado/certificado.tpl.php', $output, true);
+        $this->template->setMainTitle($this->language_text['Certificados']['cert_titulo']);
         $this->template->setMainContent($view);
         $this->template->getTemplate();
     }

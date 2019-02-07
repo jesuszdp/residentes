@@ -1,7 +1,7 @@
 <div id="page-inner">
-    <div class="col-sm-12">
+    <!-- div class="col-sm-12">
         <h1 class="page-head-line"><?php echo $language_text['Certificados']['cert_titulo']; ?></h1>
-    </div>
+    </div -->
     <?php echo form_open('certificado/index', array('id' => 'form_certificado')); ?>
     <div class="col-sm-12" style="margin-bottom:20px;">
         <h4 class="page-head-line"><?php echo $language_text['Certificados']['cert_instrucciones']; ?></h4>
