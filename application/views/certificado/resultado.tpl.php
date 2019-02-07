@@ -28,7 +28,7 @@
                             <td>'.$dato['res_nombre'].'</td>
                             <td>'.$dato['res_especialidad'].'</td>
                             <td>'.$dato['res_unidad'].'</td>
-                            <td>'.$dato['res_delegacion'].'</td>
+                            <td>'.$dato['res_ciudad'].'</td>
                             <td>'.$dato['res_categoria'].'</td>
                         </tr>';
                     }                
