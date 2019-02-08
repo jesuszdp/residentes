@@ -20,6 +20,7 @@ class Certificado extends MY_Controller {
 
     public function index($folio=null) {
         $form = $this->input->post(null, true); //Limpieza de datos
+        $output['display_form'] = true;
         if($form) { //Se valida el envío de datos
             if((array_key_exists('folio', $form) && !empty($form['folio']))  || (array_key_exists('curp', $form) && !empty($form['curp'])) || ((array_key_exists('nombre', $form) && !empty($form['nombre'])) && (array_key_exists('apellido_paterno', $form) && !empty($form['apellido_paterno'])))){ //Validar datos mínimos obligatorios
                 $this->load->library('form_validation');
@@ -60,18 +61,17 @@ class Certificado extends MY_Controller {
         $folio = xss_clean($folio); //Limpiar cadena
         if(!is_null($folio) && !empty($folio)){ //Almacenar en arreglo POST valores de búsqueda
             //$folio = decrypt_base64(xss_clean($folio));
+            $output['display_form'] = false;
             $folio = xss_clean($folio);
             $this->load->library('form_validation');
             $this->form_validation->set_data(array('folio'=>$folio));
             $this->form_validation->set_rules('folio', 'Folio', 'required|alpha_dash|min_length[22]|max_length[30]');
 
             if ($this->form_validation->run() == TRUE) {
-                //$form = $this->input->post(null, true); //Limpieza de datos
                 $params = array('table'=>'certificado.residencia', 'where'=>"res_folio='".$folio."'");
                 $datos['datos'] = $this->certificado->get_certificado($params);
                 $output['resultado'] = $this->load->view('certificado/resultado.tpl.php', $datos, true);
             } else {
-                //echo "***";
                 //pr(validation_errors());
                 $output['msg'] = $this->language_text['Certificados']['cert_error_folio_incorrecto'];
             }
