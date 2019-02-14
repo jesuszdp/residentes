@@ -66,7 +66,7 @@ class Usuario extends MY_Controller {
             'cat.clave_categoria','cat.nombre categoria'
         );*/
         $params['select'] = array(
-            'usuarios.id_usuario', 'usuarios.activo usuario_activo', 'usuarios.username', 'usuarios.email'
+            'usuarios.id_usuario', 'usuarios.activo usuario_activo', 'usuarios.username', 'usuarios.email', 'uni.nombre as unidad', 'cat.nombre as categoria', 'del.nombre as delegacion', 'dep.nombre as departamento', 'usuarios.nombre', 'usuarios.apellido_paterno', 'usuarios.apellido_materno', 'del.clave_delegacional'
         );
         $resultado = $this->usuario->get_usuarios($params);
         //pr($resultado);
@@ -81,7 +81,8 @@ class Usuario extends MY_Controller {
         $this->load->model('Catalogo_model', 'catalogo');
         $output['language_text'] = $this->language_text;
         $output['usuario'] = $this->obtener_db_usuario($usuario);
-        //$output['paises'] = dropdown_options($this->catalogo->get_paises(), "clave_pais", "lang", $this->obtener_idioma());
+        $output['delegaciones'] = dropdown_options($this->catalogo->get_delegaciones(null, array('oficinas_centrales' => true)), 'clave_delegacional', 'nombre');
+        //$output['delegaciones'] = dropdown_options($this->catalogo->get_paises(), "clave_pais", "lang", $this->obtener_idioma());
         $output['datos_basicos'] = $this->load->view('usuario/datos_basicos.tpl.php', $output, true);
         $output['grupos_usuario'] = $this->usuario->get_niveles_acceso($output['usuario']['id_usuario']);
         $output['campo_password'] = $this->load->view('usuario/campo_password.tpl.php', $output, true);
@@ -107,7 +108,7 @@ class Usuario extends MY_Controller {
         */
         $filtros['select'] = array(
             //'usuarios.id_usuario','usuarios.username', 'concat(inf.nombre, $$ $$, inf.apellido_paterno, $$ $$, inf.apellido_materno) nombre_completo', 'del.nombre delegacion', 'inf.es_imss', 'usuarios.activo','(select array_agg(nombre) from sistema.roles R join sistema.usuario_rol UR on R.clave_rol=UR.clave_rol and UR.id_usuario=usuarios.id_usuario and UR.activo=true) as rol'
-            'usuarios.id_usuario','usuarios.username', 'usuarios.username nombre_completo', 'usuarios.activo','(select array_agg(nombre) from sistema.roles R join sistema.usuario_rol UR on R.clave_rol=UR.clave_rol and UR.id_usuario=usuarios.id_usuario and UR.activo=true) as rol'
+            'usuarios.id_usuario','usuarios.username', 'usuarios.email', 'concat(usuarios.nombre, $$ $$, usuarios.apellido_paterno, $$ $$, usuarios.apellido_materno) nombre_completo', 'uni.nombre as unidad', 'cat.nombre as categoria', 'del.nombre as delegacion', 'usuarios.activo','(select array_agg(nombre) from sistema.roles R join sistema.usuario_rol UR on R.clave_rol=UR.clave_rol and UR.id_usuario=usuarios.id_usuario and UR.activo=true) as rol'
         );
 
         $usuarios['data'] = $this->usuario->get_usuarios($filtros); //exit();
@@ -137,14 +138,20 @@ class Usuario extends MY_Controller {
                         $filtros['ilike']['del.nombre'] = $value;
                         break;
                     case 'unidad':
-                        $filtros['like']['uni.nombre'] = $value;
+                        $filtros['ilike']['uni.nombre'] = $value;
                         break;
                     case 'nombre_completo':
-                        $filtros['like']['concat(inf.nombre, $$ $$, inf.apellido_paterno, $$ $$, inf.apellido_materno)'] = $value;
+                        $filtros['ilike']['concat(usuarios.nombre, $$ $$, usuarios.apellido_paterno, $$ $$, usuarios.apellido_materno)'] = $value;
                         break;
-                    case 'es_imss':
+                    case 'email':
+                        $filtros['ilike']['usuarios.email'] = $value;
+                        break;
+                    case 'categoria':
+                        $filtros['ilike']['cat.nombre'] = $value;
+                        break;
+                    /*case 'es_imss':
                         $filtros['where']['inf.es_imss'] = $value;
-                        break;
+                        break;*/
                     case 'activo':
                         $filtros['where']['usuarios.activo'] = $value;
                         break;
@@ -186,7 +193,7 @@ class Usuario extends MY_Controller {
                     break;
                 case Usuario::NIVELES_ACCESO:
                     $validations = $this->config->item('form_niveles_acceso_usuario');
-                    $view = $this->get_niveles($id_usuario);
+                    //$view = $this->get_niveles($id_usuario);
                     break;
                 case Usuario::STATUS_ACTIVIDAD:
                     $validations = $this->config->item('form_status_actividad_usuario');
@@ -228,7 +235,7 @@ class Usuario extends MY_Controller {
                     $view = $this->load->view('usuario/campo_password.tpl.php', $output, true);
                     break;
                 case Usuario::NIVELES_ACCESO:
-                    $view = $this->get_niveles($id_usuario);
+                    $view = $this->get_niveles($id_usuario, $output);
                     break;
             }
         }
@@ -263,7 +270,7 @@ class Usuario extends MY_Controller {
         return $this->load->view('usuario/datos_basicos.tpl.php', $output, true);
     }
 
-    private function get_niveles($id_usuario = 0) {
+    private function get_niveles($id_usuario = 0, $output = null) {
         $output['grupos_usuario'] = $this->usuario->get_niveles_acceso($id_usuario);
         //pr($output);
         $output['view_grupos_usuario'] = $this->load->view('usuario/tabla_niveles.tpl.php', $output, true);
@@ -282,7 +289,7 @@ class Usuario extends MY_Controller {
                 $output['registro_valido'] = $this->usuario->nuevo($data, $tipo);
             } else {
                 //pr($this->form_validation)
-                pr('no valido');
+                //pr('no valido');
             }
         }
         $this->load->model('Catalogo_model', 'catalogo');

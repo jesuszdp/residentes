@@ -153,7 +153,7 @@ echo form_open('usuario/nuevo/'.Usuario::SIAP, array('id' => 'form_registro','au
                                     <div class="col-md-4">
                                         <label for="materno" class="control-label">
                                             <b class="rojo">*</b>
-                                            Nivel de atención:</label>
+                                            Rol:</label>
                                         </div>
                                         <div class="col-md-8">
                                             <div class="input-group">

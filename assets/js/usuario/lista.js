@@ -55,9 +55,11 @@ $(function(){
       //{name: 'matricula', title: 'Matrícula', type: 'text'},
       {name: 'username', title: 'Usuario', type: 'text'},
       {name: 'nombre_completo', title: 'Nombre completo', type: 'text'},
+      {name: 'email', title: 'Correo electrónico', type: 'text'},
       {name: 'delegacion', title: 'Delegación', type: 'text'},
-      //{name: 'unidad', title: 'Unidad', type: 'text'},
-      {name: 'es_imss', title: 'Interno', type: 'checkbox', sorting: false},
+      {name: 'unidad', title: 'Unidad', type: 'text'},
+      {name: 'categoria', title: 'Categoría', type: 'text'},
+      //{name: 'es_imss', title: 'Interno', type: 'checkbox', sorting: false},
       {name: 'activo', title: 'Activo', type: 'checkbox', sorting: false},
       {name: 'rol', title: 'Roles', sorting: false, filtering: false},
       {type: "control", editButton: false, deleteButton: false, width: "10%",
@@ -72,6 +74,12 @@ $(function(){
   });
   
   $("#pager").on("change", function() {
+    var page = parseInt($(this).val(), 10);
+    $("#lista_usuarios").jsGrid("option", "pageSize", page);
+  });
+
+  $("#btn_nuevo_usuario").on("submit", function() {
+    event.preventDefault();
     var page = parseInt($(this).val(), 10);
     $("#lista_usuarios").jsGrid("option", "pageSize", page);
   });

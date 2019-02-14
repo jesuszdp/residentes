@@ -23,9 +23,23 @@ if (isset($status) && $status)
             'attributes' => array(
                 'readonly' => '',
                 'class' => 'form-control',
-                'style' => 'color: #6d7a83'
             )));
       ?>
+    </div>
+    <div class="col-sm-6 text-center">
+      <label> Delegación: </label>
+      <br>
+      <?php
+        echo $this->form_complete->create_element(array(
+            'id' => 'delegacion',
+            'type' => 'dropdown',
+            'value' => $usuario['clave_delegacional'],
+            'options' => $delegaciones,
+            'attributes' => array(
+                'class' => 'form-control',
+            )));
+      ?>
+      <?php echo form_error_format('delegacion');?>
     </div>
     <div class="col-sm-6 text-center">
       <label> Correo electrónico: </label>
@@ -38,6 +52,79 @@ if (isset($status) && $status)
           'attributes' => array('class' => 'form-control')));
       ?>
       <?php echo form_error_format('email');?>
+    </div>
+    <div class="col-sm-6 text-center">
+      <label> Nombre: </label>
+      <br>
+      <?php
+        echo $this->form_complete->create_element(array(
+            'id' => 'nombre',
+            'type' => 'text',
+            'value' => $usuario['nombre'],
+            'attributes' => array(
+                'readonly' => '',
+                'class' => 'form-control',
+            )));
+      ?>
+      <?php echo form_error_format('nombre');?>
+    </div>
+    <div class="col-sm-6 text-center">
+      <label> Apellido paterno: </label>
+      <br>
+      <?php
+        echo $this->form_complete->create_element(array(
+            'id' => 'apellido_paterno',
+            'type' => 'text',
+            'value' => $usuario['apellido_paterno'],
+            'attributes' => array(
+              'readonly' => '',
+                'class' => 'form-control',
+            )));
+      ?>
+      <?php echo form_error_format('apellido_paterno');?>
+    </div>
+    <div class="col-sm-6 text-center">
+      <label> Apellido materno: </label>
+      <br>
+      <?php
+        echo $this->form_complete->create_element(array(
+            'id' => 'apellido_materno',
+            'type' => 'text',
+            'value' => $usuario['apellido_materno'],
+            'attributes' => array(
+                'readonly' => '',
+                'class' => 'form-control',
+            )));
+      ?>
+      <?php echo form_error_format('apellido_materno');?>
+    </div>
+    <div class="col-sm-6 text-center">
+      <label> Departamento: </label>
+      <br>
+      <?php
+        echo $this->form_complete->create_element(array(
+            'id' => 'departamento',
+            'type' => 'text',
+            'value' => $usuario['departamento'],
+            'attributes' => array(
+                'readonly' => '',
+                'class' => 'form-control',
+            )));
+      ?>
+    </div>
+    <div class="col-sm-6 text-center">
+      <label> Categoría: </label>
+      <br>
+      <?php
+        echo $this->form_complete->create_element(array(
+            'id' => 'categoria',
+            'type' => 'text',
+            'value' => $usuario['categoria'],
+            'attributes' => array(
+                'readonly' => '',
+                'class' => 'form-control',
+            )));
+      ?>
     </div>
   </div>
   <?php

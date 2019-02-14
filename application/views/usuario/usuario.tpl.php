@@ -20,11 +20,12 @@ echo js('usuario/usuario.js');
     <h1 class="page-head-line">Actividad del usuario</h1>
   </div>
   <div class="col-sm-12">
+  <div id="status_actividad_usuario" class="col-sm-12"></div>
     <div class="col-sm-4"></div>
     <div class="col-sm-2">
       <label>Actividad</label>
     </div>
-    <div id="status_actividad_usuario" class="col-sm-2">
+    <div class="col-sm-2">
        <?php
        $opciones_actividad = array(
            0 => 'Desactivado', 1 => 'Activo'
@@ -55,7 +56,7 @@ echo js('usuario/usuario.js');
       <h1 class="page-head-line">Contraseña de usuario</h1>
     </div>
     <div class="col-md-12">
-      <div class="" style="text-aligne:center; width: 650px; text-align: left;">
+      <div class="" style="text-aligne:center; text-align: left;">
           <!--form usuario completo-->
           <?php
           echo form_open('usuario/editar/' . $usuario['id_usuario'] . '/' . Usuario::PASSWORD, array('id' => 'form_actualizar_password'));

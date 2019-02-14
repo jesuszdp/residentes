@@ -118,11 +118,11 @@ $config["consulta_folio"] = array(
         'label' => 'Folio',
         'rules' => 'required|alpha_dash|min_length[22]|max_length[30]',
     ),
-    array(
+    /*array(
         'field' => 'captcha',
         'label' => 'Código de verificación',
         'rules' => 'required|check_captcha',
-    ),
+    ),*/
 );
 $config["consulta_curp"] = array(
     array(
@@ -130,11 +130,11 @@ $config["consulta_curp"] = array(
         'label' => 'CURP',
         'rules' => 'required|alpha_numeric|exact_length[18]',
     ),
-    array(
+    /*array(
         'field' => 'captcha',
         'label' => 'Código de verificación',
         'rules' => 'required|check_captcha',
-    ),
+    ),*/
 );
 $config["consulta_nombre"] = array(
     array(
@@ -153,11 +153,11 @@ $config["consulta_nombre"] = array(
         'label' => 'Nombre',
         'rules' => 'required|alpha_nombre_nomina|min_length[2]|max_length[50]'
     ),
-    array(
+    /*array(
         'field' => 'captcha',
         'label' => 'Código de verificación',
         'rules' => 'required|check_captcha',
-    ),
+    ),*/
 );
 
 $config["form_registro_investigacion"] = array(

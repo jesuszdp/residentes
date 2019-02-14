@@ -129,7 +129,7 @@ class Inicio extends MY_Controller {
 
     private function redireccion_inicio(&$foro_educacion) {
         $redirect = array(LNiveles_acceso::Investigador => '/registro_investigacion/index',
-            LNiveles_acceso::Revisor => '/revision/trabajos_investigacion_evaluacion',
+            LNiveles_acceso::Revisor => '/certificado/buscador',
             'default' => 'inicio/inicio',
         );
         ///Redirección de investigador

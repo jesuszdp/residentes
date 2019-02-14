@@ -3,10 +3,15 @@
 <script src="<?php echo base_url(); ?>assets/js/js_export_grid/jsgrid-1.5.3/jsgrid.min.js"></script>
 <?php echo js('usuario/lista.js'); ?>
 <div id="page-inner">
-    <div class="col-sm-12">
-        <h1 class="page-head-line">
-            Lista de usuarios
-        </h1>
+    <div class="row" style="padding: 0px 15px;">
+        <div class="col-sm-6">
+            <h1 class="page-head-line">
+                Lista de usuarios
+            </h1>
+        </div>
+        <div class="col-sm-6 text-right" style="line-height: 80px;">
+            <a href="<?php echo site_url('usuario/nuevo'); ?>" class="btn-pad botonPE">Nuevo</a>
+        </div>
     </div>
 
     <div class="panel panel-default">

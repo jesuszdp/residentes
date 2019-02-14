@@ -194,7 +194,7 @@
                 <div class="clearfix"></div>
                 <!-- <div id="main"> -->
                 <section class="page-section background-img">
-                    <div class="container">
+                    <div id="contenido_principal" class="container">
                         <div class="">
                             <?php echo $main_content; ?>
                         </div>

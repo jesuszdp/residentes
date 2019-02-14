@@ -6,8 +6,7 @@ if (isset($status) && $status)
 ?>
 
 <div class="form-group">
-  <div class="col-md-4">
-  </div>
+    <div class="col-md-2"></div>
     <label class="col-md-4 control-label">Contraseña: </label>
     <div class="col-md-4 input-group">
         <span class="input-group-addon"></span>
@@ -15,11 +14,11 @@ if (isset($status) && $status)
         echo $this->form_complete->create_element(array('id' => 'pass', 'type' => 'password', 'value' => '', 'attributes' => array('name' => 'pass', 'class' => 'form-control', 'autocomplete' => 'off')));
         ?>
     </div>
-    <?php echo form_error_format('pass'); ?>
+    <div class="col-md-2"></div>
+    <div class="col-md-12"><?php echo form_error_format('pass'); ?></div>    
 </div>
 <div class="form-group">
-  <div class="col-md-4">
-  </div>
+    <div class="col-md-2"></div>
     <label class="col-md-4 control-label">Confirmar contraseña: </label>
     <div class="col-md-4 input-group">
         <span class="input-group-addon"></span>
@@ -27,7 +26,8 @@ if (isset($status) && $status)
         echo $this->form_complete->create_element(array('id' => 'pass_confirm', 'type' => 'password', 'attributes' => array('name' => 'pass_confirm', 'class' => 'form-control')));
         ?>
     </div>
-    <?php echo form_error_format('pass_confirm'); ?>
+    <div class="col-md-2"></div>
+    <div class="col-md-12"><?php echo form_error_format('pass_confirm'); ?></div>
 </div>
 
 <br>

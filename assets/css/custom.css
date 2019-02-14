@@ -417,3 +417,29 @@ h4 {
 	background-color: #5c5c5c;
 	color: #FFF;
 }
+
+.div_container {
+	padding: 10px 20px;
+	pointer-events: none;
+}
+
+#session_form > div > div >.form-group > div {
+	padding: 10px 20px;
+}
+
+select.form-control {
+	-webkit-appearance: menulist;
+}
+
+.preventSelect {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.bg_aguila {
+	background: transparent url("../../assets/img/Fondo-Aguila-Gris.jpg") no-repeat  fixed center !important;
+}
