@@ -43,7 +43,7 @@ class Inicio extends MY_Controller {
         } else {
 
             $post = $this->input->post(null, true);
-        }
+        } 
         ////        $data_post = $this->input->post();
         if ($post) {
 
@@ -96,6 +96,10 @@ class Inicio extends MY_Controller {
                         $data['errores'] = $data['language_text']['mensajes']['msg_usuario_no_existe'];
                         //$this->session->set_flashdata('flash_usuario', $mensajes[$valido]);
                         break;
+                    case 4:
+                        $data['errores'] = $data['language_text']['mensajes']['msg_usuario_inactivo'];
+                        //$this->session->set_flashdata('flash_usuario', $mensajes[$valido]);
+                        break;
                     default :
                         break;
                 }
@@ -128,9 +132,10 @@ class Inicio extends MY_Controller {
     }*/
 
     private function redireccion_inicio(&$foro_educacion) {
-        $redirect = array(LNiveles_acceso::Investigador => '/registro_investigacion/index',
-            LNiveles_acceso::Revisor => '/certificado/buscador',
-            'default' => 'inicio/inicio',
+        $redirect = array(//LNiveles_acceso::Investigador => '/registro_investigacion/index',
+            //LNiveles_acceso::Revisor => '/certificado/buscador',
+            LNiveles_acceso::Consulta => '/certificado/buscador',
+            'default' => '/certificado/buscador',
         );
         ///Redirección de investigador
         if (isset($foro_educacion['usuario']['niveles_acceso'][0]['clave_rol'])) {

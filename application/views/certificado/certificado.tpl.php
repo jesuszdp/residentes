@@ -52,9 +52,7 @@ if(isset($datos) AND !empty($datos)){
         </div>
     <?php }                
 } else {
-    echo '<h2 class="text-center">
-        No existen registros con los datos introducidos.
-    </h2>';
+    echo $msg;
 }
 ?>
 <div class="preventSelect"></div>

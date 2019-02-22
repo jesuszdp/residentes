@@ -20,7 +20,8 @@ class Usuario extends MY_Controller {
         $this->load->library('seguridad');
         $this->load->library('empleados_siap');
         $this->load->library('form_validation');
-        //$this->load->library('en_tpmsg');
+        $this->load->library('en_tpmsg');
+        $this->load->library('en_sexo');
         $this->load->model('Usuario_model', 'usuario');
         $this->template->setTitle('Usuarios');
     }
@@ -98,6 +99,7 @@ class Usuario extends MY_Controller {
         $filtros = $this->genera_filtros($params);
         $filtros['limit'] = isset($params['pageSize']) ? $params['pageSize'] : Usuario::LIMIT;
         $filtros['offset'] = isset($params['pageIndex']) ? ($filtros['limit'] * ($params['pageIndex'] - 1)) : 0;
+        $filtros['order_by'] = isset($params['sortOrder']) ? array('field'=>$params['sortField'], 'order'=>$params['sortOrder']) : null;
         /*
         $filtros['select'] = array(
             'usuarios.id_usuario', 'coalesce(inf.matricula, usuarios.username) matricula',
@@ -132,7 +134,7 @@ class Usuario extends MY_Controller {
                         break;
                         */
                     case 'username':
-                        $filtros['where']['usuarios.username'] = $value;
+                        $filtros['ilike']['usuarios.username'] = $value;
                         break;
                     case 'delegacion':
                         $filtros['ilike']['del.nombre'] = $value;
@@ -286,7 +288,8 @@ class Usuario extends MY_Controller {
                 $data = $this->input->post(null, true);
                 $data = $this->filtra_datos_form($data);
                 $output['post'] = $data;
-                $output['registro_valido'] = $this->usuario->nuevo($data, $tipo);
+                $data['idioma'] = $this->obtener_idioma();
+                $output['registro_valido'] = $this->usuario->nuevo($data, $tipo, $this->language_text);
             } else {
                 //pr($this->form_validation)
                 //pr('no valido');

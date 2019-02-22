@@ -49,7 +49,7 @@ if (isset($status) && $status)
           'id' => 'email',
           'type' => 'text',
           'value' => $usuario['email'],
-          'attributes' => array('class' => 'form-control')));
+          'attributes' => array('class' => 'form-control', 'readonly'=>'true')));
       ?>
       <?php echo form_error_format('email');?>
     </div>
@@ -62,7 +62,6 @@ if (isset($status) && $status)
             'type' => 'text',
             'value' => $usuario['nombre'],
             'attributes' => array(
-                'readonly' => '',
                 'class' => 'form-control',
             )));
       ?>
@@ -77,7 +76,6 @@ if (isset($status) && $status)
             'type' => 'text',
             'value' => $usuario['apellido_paterno'],
             'attributes' => array(
-              'readonly' => '',
                 'class' => 'form-control',
             )));
       ?>
@@ -92,7 +90,6 @@ if (isset($status) && $status)
             'type' => 'text',
             'value' => $usuario['apellido_materno'],
             'attributes' => array(
-                'readonly' => '',
                 'class' => 'form-control',
             )));
       ?>
@@ -107,7 +104,6 @@ if (isset($status) && $status)
             'type' => 'text',
             'value' => $usuario['departamento'],
             'attributes' => array(
-                'readonly' => '',
                 'class' => 'form-control',
             )));
       ?>
@@ -121,7 +117,6 @@ if (isset($status) && $status)
             'type' => 'text',
             'value' => $usuario['categoria'],
             'attributes' => array(
-                'readonly' => '',
                 'class' => 'form-control',
             )));
       ?>

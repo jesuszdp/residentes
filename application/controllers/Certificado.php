@@ -38,6 +38,8 @@ class Certificado extends MY_Controller {
                 $output['datos'] = array();
                 //$output['msg'] = $this->language_text['Certificados']['cert_error_folio_incorrecto'];
             }
+        } else {
+            $output['msg'] = $this->language_text['Certificados']['cert_texto_inicio'];
         }
         $view = $this->load->view('certificado/certificado.tpl.php', $output, true);     
         $this->template->setMainTitle($this->language_text['Certificados']['cert_titulo']);

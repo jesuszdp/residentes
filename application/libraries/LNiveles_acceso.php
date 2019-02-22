@@ -16,10 +16,10 @@ class LNiveles_acceso
 
     const Super = 'SUPERADMIN',
             Admin = 'ADMIN',
-            Mesa = 'MESA_AYUDA', 
-            Consulta = 'CONSULTA',
-            Revisor = 'REVISOR',
-            Investigador = 'INV';
+            //Mesa = 'MESA_AYUDA', 
+            Consulta = 'CONSULTA';
+            //Revisor = 'REVISOR',
+            //Investigador = 'INV';
     
       //put your code here
     public function __construct()

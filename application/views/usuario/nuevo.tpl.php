@@ -8,7 +8,7 @@
                     Registro de usuarios
                 </h1>
             </div>
-            <div class="panel-default">
+            <div class="panel-default"><div class="clearfix"></div>
                 <?php
                 if (isset($registro_valido['result']))
                 {

@@ -746,7 +746,111 @@ class Catalogo extends MY_Controller {
            $vista = $this->load->view('admin/admin.tpl.php', $data_view, true);
            $this->template->setMainContent($vista);
            $this->template->getTemplate();
-       }
+        }
+
+        public function gestion_usuarios(){
+            $this->db->schema = 'sistema';
+            $crud = $this->new_crud();
+            $crud->set_table('usuarios');
+            $crud->set_subject('usuario');
+            $crud->set_primary_key('id_usuario');
+
+            $crud->columns('id_usuario',"username",'email',"nombre", 'apellido_paterno','apellido_materno',
+            'clave_delegacional','clave_departamental','clave_categoria','activo');
+            $crud->change_field_type('id_usuario', 'hidden');
+            $crud->change_field_type('fecha_registro', 'hidden');
+            /*$crud->add_fields("nombre",'id_delegacion',"clave_presupuestal", 'nivel_atencion','id_tipo_unidad',
+            'es_umae','activo','latitud','longitud','direccion_fisica','entidad_federativa','anio','unidad_principal',
+            'nombre_unidad_principal');
+            $crud->edit_fields("nombre",'id_delegacion',"clave_presupuestal", 'nivel_atencion','id_tipo_unidad',
+            'es_umae','activo','latitud','longitud','direccion_fisica','entidad_federativa','anio','unidad_principal',
+            'nombre_unidad_principal');*/
+            $crud->field_type('activo','true_false');
+            $crud->required_fields('username','token','password','email');
+
+            /*$crud->set_relation('clave_delegacional','delegaciones','nombre');
+            /$crud->set_relation('clave_departamental','departamento','nombre');
+            $crud->set_relation('clave_categoria','categorias','nombre');*/
+
+            $data_view['output'] = $crud->render();
+            $data_view['title'] = "Usuarios";
+
+            $vista = $this->load->view('admin/admin.tpl.php', $data_view, true);
+            $this->template->setMainContent($vista);
+            $this->template->getTemplate();
+        }
+
+        public function gestion_roles(){
+            $this->db->schema = 'sistema';
+            $crud = $this->new_crud();
+            $crud->set_table('roles');
+            $crud->set_subject('roles');
+            $crud->set_primary_key('clave_rol');
+
+            $crud->columns('clave_rol','nombre','activo','orden');
+            //$crud->change_field_type('clave_rol', 'hidden');
+            $crud->add_fields('clave_rol',"nombre",'descripcion','activo','orden');
+            $crud->edit_fields("nombre",'descripcion','activo','orden');
+            
+            $crud->field_type('activo','true_false');
+            $crud->required_fields('clave_rol',"nombre",'orden');
+
+            $data_view['output'] = $crud->render();
+            $data_view['title'] = "Roles";
+
+            $vista = $this->load->view('admin/admin.tpl.php', $data_view, true);
+            $this->template->setMainContent($vista);
+            $this->template->getTemplate();
+        }
+
+        public function gestion_configurador_modulos(){
+            $this->db->schema = 'sistema';
+            $crud = $this->new_crud();
+            $crud->set_table('configurador_modulo');
+            $crud->set_subject('configurador_modulo');
+            $crud->set_primary_key('clave_configurador_modulo');
+
+            $crud->columns('clave_configurador_modulo','nombre','activo');
+            //$crud->change_field_type('clave_rol', 'hidden');
+            $crud->add_fields('clave_configurador_modulo',"nombre",'descripcion','activo');
+            $crud->edit_fields("nombre",'descripcion','activo');
+            
+            $crud->field_type('activo','true_false');
+            $crud->required_fields('clave_configurador_modulo',"nombre");
+
+            $data_view['output'] = $crud->render();
+            $data_view['title'] = "Configurador modulos";
+
+            $vista = $this->load->view('admin/admin.tpl.php', $data_view, true);
+            $this->template->setMainContent($vista);
+            $this->template->getTemplate();
+        }
+
+        public function gestion_certificado($tipo){
+            $this->db->schema = 'certificado';
+            $crud = $this->new_crud();
+            $crud->set_table('residencia');
+            $crud->set_subject('certificados');
+            $crud->set_primary_key('id_residencia');
+
+            if($tipo=='c'){
+                $crud->columns('id_residencia','res_folio','res_fecha_inicio','res_fecha_termino','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre','res_especialidad','res_unidad','res_ciudad','res_delegacion','res_categoria','res_umae');
+            } else {
+                $crud->columns('id_residencia','res_folio','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre');
+            }
+            $crud->add_fields('id_residencia','res_folio','res_fecha_inicio','res_fecha_termino','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre','res_especialidad','res_unidad','res_ciudad','res_delegacion','res_categoria','res_umae');
+            $crud->edit_fields('res_folio','res_fecha_inicio','res_fecha_termino','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre','res_especialidad','res_unidad','res_ciudad','res_delegacion','res_categoria','res_umae');
+            
+            $crud->field_type('res_umae','true_false');
+            $crud->required_fields('id_residencia',"res_folio",'res_curp','res_apellido_paterno','res_nombre','res_umae');
+
+            $data_view['output'] = $crud->render();
+            $data_view['title'] = "Certificados";
+
+            $vista = $this->load->view('admin/admin.tpl.php', $data_view, true);
+            $this->template->setMainContent($vista);
+            $this->template->getTemplate();
+        }
 
        /**
         * Función que hace la gestión de la configuración

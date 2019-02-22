@@ -14,7 +14,7 @@ class Sesion_model extends CI_Model {
         $this->db->reset_query();
         $this->db->start_cache();
 
-        $this->db->select(array('username', 'email', 'password', 'token', ''));
+        $this->db->select(array('username', 'email', 'password', 'token', '', 'activo'));
         $this->db->from('sistema.usuarios u');
         $this->db->where('u.username', $usr);
         $this->db->or_where('u.email', $usr);//Valida que sea el correo también un nombre de usuario
@@ -33,8 +33,13 @@ class Sesion_model extends CI_Model {
             // pr($result[0]['password']);
             $this->db->flush_cache();
             $this->db->reset_query();
-            if ($clave == $result[0]['password']) {
-                return 1; //Existe
+            //pr($result[0]['activo']); exit();
+            if($result[0]['activo']==true){
+                if ($clave == $result[0]['password']) {
+                    return 1; //Existe
+                }
+            } else {
+                return 4; //Usuario no activo
             }
             return 2; //contraseña incorrrecta
         } else {
