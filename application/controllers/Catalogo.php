@@ -838,8 +838,8 @@ class Catalogo extends MY_Controller {
             } else {
                 $crud->columns('id_residencia','res_folio','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre');
             }
-            $crud->add_fields('id_residencia','res_folio','res_fecha_inicio','res_fecha_termino','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre','res_especialidad','res_unidad','res_ciudad','res_delegacion','res_categoria','res_umae');
-            $crud->edit_fields('res_folio','res_fecha_inicio','res_fecha_termino','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre','res_especialidad','res_unidad','res_ciudad','res_delegacion','res_categoria','res_umae');
+            $crud->add_fields('id_residencia','res_folio','res_fecha_inicio','res_fecha_termino','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre','res_especialidad','res_unidad','res_ciudad','res_delegacion','res_categoria','res_umae','res_anio','res_unidad_vista');
+            $crud->edit_fields('res_folio','res_fecha_inicio','res_fecha_termino','res_curp','res_apellido_paterno','res_apellido_materno','res_nombre','res_especialidad','res_unidad','res_ciudad','res_delegacion','res_categoria','res_umae','res_anio','res_unidad_vista');
             
             $crud->field_type('res_umae','true_false');
             $crud->required_fields('id_residencia',"res_folio",'res_curp','res_apellido_paterno','res_nombre','res_umae');
