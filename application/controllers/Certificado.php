@@ -31,16 +31,24 @@ class Certificado extends MY_Controller {
             $this->form_validation->set_rules('folio', 'Folio', 'required|alpha_dash|min_length[22]|max_length[30]');
 
             if ($this->form_validation->run() == TRUE) {
-                $params = array('table'=>'certificado.residencia', 'where'=>"res_folio='".$folio."'");
-                $output['datos'] = $this->certificado->get_certificado($params);
+                $params = array('table'=>'certificado.vw_concentrado', 'where'=>"res_folio='".$folio."'");
+                $datos_cert = $this->certificado->get_certificado($params);
+                foreach ($datos_cert as $key => $value) {
+                    $output['datos'][$value['res_identificador_lbl']][] = $value;
+                }
             } else {
                 //pr(validation_errors());
                 $output['datos'] = array();
                 //$output['msg'] = $this->language_text['Certificados']['cert_error_folio_incorrecto'];
             }
+            
+            
+
         } else {
             $output['msg'] = $this->language_text['Certificados']['cert_texto_inicio'];
         }
+       
+            //pr($datos);
         $view = $this->load->view('certificado/certificado.tpl.php', $output, true);     
         $this->template->setMainTitle($this->language_text['Certificados']['cert_titulo']);
         $this->template->setMainContent($view);
@@ -61,20 +69,27 @@ class Certificado extends MY_Controller {
                 if ($this->form_validation->run() == TRUE) {
                     switch ($form['tipo_busqueda']) {
                         case 'folio':
-                            $params = array('table'=>'certificado.residencia', 'where'=>"res_folio='".$form['folio']."'");
-                            break;
+                            //$params = array('table'=>'certificado.residencia', 'where'=>"res_folio='".$form['folio']."'");
+              		        $params = array('table'=>'certificado.vw_concentrado ', 'where'=>"res_folio='".$form['folio']."'");
+			            break;
                         case 'curp':
-                            $params = array('table'=>'certificado.residencia', 'where'=>"res_curp='".$form['curp']."'");
+                            //$params = array('table'=>'certificado.residencia', 'where'=>"res_curp='".$form['curp']."'");
+			                $params = array('table'=>'certificado.vw_concentrado', 'where'=>"res_curp='".$form['curp']."'");
                             break;
                         case 'nombre':
                             $form = array_map(function($str){ return mb_strtoupper($str); }, $form);
-                            $params = array('table'=>'certificado.residencia', 'where'=>"res_nombre='".$form['nombre']."' AND res_apellido_paterno='".$form['apellido_paterno']."' AND res_apellido_materno='".$form['apellido_materno']."'");
+                            $params = array('table'=>'certificado.vw_concentrado', 'where'=>"res_nombre='".$form['nombre']."' AND res_apellido_paterno='".$form['apellido_paterno']."' AND res_apellido_materno='".$form['apellido_materno']."'");
                             break;
                         default:
                             $params = array();
                             break;
                     }
-                    $datos['datos'] = $this->certificado->get_certificado($params);
+                        $datos_cert = $this->certificado->get_certificado($params);
+                        foreach ($datos_cert as $key => $value) {
+                        $datos['datos'][$value['res_identificador_lbl']][] = $value;
+                    }
+                    //pr($datos['datos']);
+                    
                     $output['resultado'] = $this->load->view('certificado/resultado_buscador.tpl.php', $datos, true);
                 }
                 //pr(validation_errors());
