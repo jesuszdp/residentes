@@ -78,7 +78,7 @@ class Certificado extends MY_Controller {
                             break;
                         case 'nombre':
                             $form = array_map(function($str){ return mb_strtoupper($str); }, $form);
-                            $params = array('table'=>'certificado.vw_concentrado', 'where'=>"res_nombre='".$form['nombre']."' AND res_apellido_paterno='".$form['apellido_paterno']."' AND res_apellido_materno='".$form['apellido_materno']."'");
+                            $params = array('table'=>'certificado.vw_concentrado', 'where'=>"upper(translate(res_nombre,'áéíóú', 'aeiou'))='".$form['nombre']."' AND upper(translate(res_apellido_paterno,'áéíóú', 'aeiou'))='".$form['apellido_paterno']."' AND upper(translate(res_apellido_materno,'áéíóú', 'aeiou'))='".$form['apellido_materno']."'");
                             break;
                         default:
                             $params = array();
