@@ -38,7 +38,7 @@ class Certificado_model extends MY_Model {
         }        
         if(isset($params['table']) && !is_null($params['table'])) {
             $query = $this->db->get($params['table']);
-            //pr($this->db->last_query());
+            pr($this->db->last_query());
             $catalogo = $query->result_array();
 
             $query->free_result();//pr($delegacion);
